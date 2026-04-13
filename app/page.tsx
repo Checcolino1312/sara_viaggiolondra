@@ -66,7 +66,7 @@ export default function HomePage() {
                   <p className="text-zinc-300 text-xs mt-0.5">{hotel.nearestMetro}</p>
                 </div>
                 <a
-                  href={mapsUrl(hotel.coords.lat, hotel.coords.lng)}
+                  href={mapsUrl(hotel.coords)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-400 hover:text-zinc-700 transition-colors flex-shrink-0 mt-0.5"

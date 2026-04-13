@@ -1,5 +1,5 @@
-export function mapsUrl(lat: number, lng: number): string {
-  return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+export function mapsUrl(place: string): string {
+  return `https://www.google.com/maps/search/?api=1&query=${place.trim().replace(/\s+/g, "+")}`;
 }
 
 export function countdown(targetDate: Date): number {

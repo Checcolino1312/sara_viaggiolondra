@@ -64,7 +64,7 @@ export default function ActivityCard({ activity, index, isLast }: Props) {
           {activity.coords && (
             <div className="px-4 py-2 border-t border-zinc-100 bg-zinc-50/60">
               <a
-                href={mapsUrl(activity.coords.lat, activity.coords.lng)}
+                href={mapsUrl(activity.coords)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-[11px] text-zinc-400 hover:text-zinc-700 transition-colors"
