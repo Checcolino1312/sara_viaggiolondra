@@ -23,7 +23,7 @@ export default function ActivityCard({ activity, index, isLast }: Props) {
       <div className="flex flex-col items-center">
         <div
           className={`relative z-10 flex-shrink-0 w-2 h-2 mt-1.5 rounded-full ${
-            isSpecial ? "bg-zinc-800" : "bg-zinc-300"
+            isSpecial ? "bg-zinc-700" : "bg-zinc-300"
           }`}
         />
         {!isLast && (
@@ -38,8 +38,8 @@ export default function ActivityCard({ activity, index, isLast }: Props) {
         <div
           className={`rounded-lg p-3.5 border ${
             isSpecial
-              ? "bg-white border-zinc-400"
-              : "bg-white border-zinc-200"
+              ? "bg-gradient-to-br from-stone-50 to-zinc-100 border-zinc-300"
+              : "bg-gradient-to-br from-white to-zinc-50 border-zinc-200"
           }`}
         >
           <div className="flex items-start justify-between gap-2 mb-2">

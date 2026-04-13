@@ -9,6 +9,15 @@ import Footer from "@/components/Footer";
 
 const TRIP_START = new Date("2026-04-18T00:00:00");
 
+// Un colore discreto per ogni giorno — sfondo del tag numero
+const DAY_COLORS: Record<number, { tag: string; card: string }> = {
+  1: { tag: "bg-sky-100 text-sky-600",       card: "from-white to-sky-50 border-sky-100 hover:border-sky-200" },
+  2: { tag: "bg-violet-100 text-violet-600",  card: "from-white to-violet-50 border-violet-100 hover:border-violet-200" },
+  3: { tag: "bg-amber-100 text-amber-700",    card: "from-white to-amber-50 border-amber-100 hover:border-amber-200" },
+  4: { tag: "bg-emerald-100 text-emerald-700",card: "from-white to-emerald-50 border-emerald-100 hover:border-emerald-200" },
+  5: { tag: "bg-rose-100 text-rose-600",      card: "from-white to-rose-50 border-rose-100 hover:border-rose-200" },
+};
+
 export default function HomePage() {
   const [daysLeft, setDaysLeft] = useState<number | null>(null);
 
@@ -37,8 +46,7 @@ export default function HomePage() {
         <section className="animate-in" style={{ animationDelay: "60ms" }}>
           <p className="text-zinc-400 text-[11px] uppercase tracking-wider mb-2">Viaggio</p>
           <div className="divide-y divide-zinc-100 border border-zinc-200 rounded-xl overflow-hidden">
-
-            <div className="px-4 py-3 bg-zinc-50">
+            <div className="px-4 py-3 bg-gradient-to-br from-white to-zinc-50">
               <div className="flex justify-between items-baseline">
                 <span className="text-zinc-700 text-sm">Andata</span>
                 <span className="text-zinc-400 text-xs tabular-nums">
@@ -53,7 +61,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="px-4 py-3 bg-zinc-50">
+            <div className="px-4 py-3 bg-gradient-to-br from-white to-zinc-50">
               <div className="flex justify-between items-baseline">
                 <span className="text-zinc-700 text-sm">Ritorno</span>
                 <span className="text-zinc-400 text-xs tabular-nums">{flightReturn.departureTime}</span>
@@ -66,7 +74,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="px-4 py-3 bg-zinc-50">
+            <div className="px-4 py-3 bg-gradient-to-br from-white to-zinc-50">
               <div className="flex justify-between items-start">
                 <div>
                   <span className="text-zinc-700 text-sm">{hotel.name}</span>
@@ -86,31 +94,35 @@ export default function HomePage() {
                 </a>
               </div>
             </div>
-
           </div>
         </section>
 
         {/* Giorni */}
         <section className="animate-in" style={{ animationDelay: "120ms" }}>
           <p className="text-zinc-400 text-[11px] uppercase tracking-wider mb-2">Itinerario</p>
-          <div className="space-y-1">
-            {days.map((day, i) => (
-              <Link
-                key={day.id}
-                href={`/day/${day.id}`}
-                className="flex items-center gap-3 px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl hover:bg-zinc-100 hover:border-zinc-300 transition-all group animate-in"
-                style={{ animationDelay: `${(i + 2) * 50}ms` }}
-              >
-                <span className="text-zinc-300 text-xs tabular-nums w-4 flex-shrink-0">{day.id}</span>
-                <div className="flex-1 min-w-0">
-                  <p className="text-zinc-800 text-sm font-medium truncate">{day.title}</p>
-                  <p className="text-zinc-400 text-xs truncate mt-0.5">
-                    {day.date} · {day.activities.length} tappe
-                  </p>
-                </div>
-                <ArrowRight size={14} className="text-zinc-300 group-hover:text-zinc-500 transition-colors flex-shrink-0" />
-              </Link>
-            ))}
+          <div className="space-y-1.5">
+            {days.map((day, i) => {
+              const colors = DAY_COLORS[day.id];
+              return (
+                <Link
+                  key={day.id}
+                  href={`/day/${day.id}`}
+                  className={`flex items-center gap-3 px-4 py-3 bg-gradient-to-br border rounded-xl transition-all group animate-in ${colors.card}`}
+                  style={{ animationDelay: `${(i + 2) * 50}ms` }}
+                >
+                  <span className={`text-[11px] font-semibold tabular-nums w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${colors.tag}`}>
+                    {day.id}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-zinc-800 text-sm font-medium truncate">{day.title}</p>
+                    <p className="text-zinc-400 text-xs truncate mt-0.5">
+                      {day.date} · {day.activities.length} tappe
+                    </p>
+                  </div>
+                  <ArrowRight size={14} className="text-zinc-300 group-hover:text-zinc-500 transition-colors flex-shrink-0" />
+                </Link>
+              );
+            })}
           </div>
         </section>
 

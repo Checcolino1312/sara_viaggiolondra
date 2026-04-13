@@ -42,7 +42,7 @@ function ChecklistItem({
   return (
     <button
       onClick={onToggle}
-      className={`w-full flex items-center gap-3 px-4 py-3 border-b border-zinc-100 last:border-0 text-left transition-colors hover:bg-zinc-50 ${
+      className={`w-full flex items-center gap-3 px-4 py-3 border-b border-violet-50 last:border-0 text-left transition-colors hover:bg-violet-50/50 ${
         checked ? "opacity-50" : ""
       }`}
     >
@@ -104,7 +104,7 @@ export default function InfoPage() {
         {/* Hotel */}
         <section className="animate-in" style={{ animationDelay: "40ms" }}>
           <p className="text-zinc-400 text-[11px] uppercase tracking-wider mb-2">Hotel</p>
-          <div className="border border-zinc-200 rounded-xl px-4 py-3 bg-zinc-50">
+          <div className="border border-zinc-200 rounded-xl px-4 py-3 bg-gradient-to-br from-white to-zinc-50">
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-zinc-800 text-sm font-medium">{hotel.name}</p>
@@ -138,9 +138,9 @@ export default function InfoPage() {
             <p className="text-zinc-400 text-[11px] uppercase tracking-wider">Transfer andata — 18 apr</p>
             <p className="text-zinc-400 text-[11px]">{transferInTotal}</p>
           </div>
-          <div className="border border-zinc-200 rounded-xl overflow-hidden">
+          <div className="border border-sky-100 rounded-xl overflow-hidden">
             {transferIn.map((s, i) => (
-              <div key={i} className="flex gap-3 px-4 py-3 border-b border-zinc-100 last:border-0 bg-zinc-50">
+              <div key={i} className="flex gap-3 px-4 py-3 border-b border-sky-50 last:border-0 bg-gradient-to-br from-white to-sky-50">
                 <span className="text-zinc-300 text-[11px] tabular-nums w-3 flex-shrink-0 mt-0.5">{i + 1}</span>
                 <div>
                   <p className="text-zinc-700 text-sm">{s.step}</p>
@@ -157,9 +157,9 @@ export default function InfoPage() {
             <p className="text-zinc-400 text-[11px] uppercase tracking-wider">Transfer ritorno — 22 apr</p>
             <p className="text-zinc-400 text-[11px]">{transferOutTotal}</p>
           </div>
-          <div className="border border-zinc-200 rounded-xl overflow-hidden">
+          <div className="border border-rose-100 rounded-xl overflow-hidden">
             {transferOut.map((s, i) => (
-              <div key={i} className="flex gap-3 px-4 py-3 border-b border-zinc-100 last:border-0 bg-zinc-50">
+              <div key={i} className="flex gap-3 px-4 py-3 border-b border-rose-50 last:border-0 bg-gradient-to-br from-white to-rose-50">
                 <span className="text-zinc-300 text-[11px] tabular-nums w-3 flex-shrink-0 mt-0.5">{i + 1}</span>
                 <div>
                   <p className="text-zinc-700 text-sm">{s.step}</p>
@@ -180,7 +180,7 @@ export default function InfoPage() {
               </span>
             )}
           </div>
-          <div className="border border-zinc-200 rounded-xl overflow-hidden bg-white">
+          <div className="border border-violet-100 rounded-xl overflow-hidden bg-white">
             {bookingItems.map((item) => (
               <ChecklistItem
                 key={item.id}
@@ -195,9 +195,9 @@ export default function InfoPage() {
         {/* Note utili */}
         <section className="animate-in" style={{ animationDelay: "200ms" }}>
           <p className="text-zinc-400 text-[11px] uppercase tracking-wider mb-2">Note utili</p>
-          <div className="border border-zinc-200 rounded-xl overflow-hidden">
+          <div className="border border-amber-100 rounded-xl overflow-hidden">
             {tips.map((tip, i) => (
-              <div key={i} className="px-4 py-3 border-b border-zinc-100 last:border-0 bg-zinc-50">
+              <div key={i} className="px-4 py-3 border-b border-amber-50 last:border-0 bg-gradient-to-br from-white to-amber-50">
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="text-zinc-700 text-sm font-medium">{tip.title}</p>
                   {tip.url && (
