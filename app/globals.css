@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fafafa;
   --foreground: #111111;
 }
 
@@ -14,7 +14,7 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(5px);
   }
   to {
     opacity: 1;
@@ -23,7 +23,7 @@
 }
 
 .animate-in {
-  animation: fadeIn 0.3s ease both;
+  animation: fadeIn 0.25s ease both;
 }
 
 html {
@@ -44,7 +44,7 @@ body {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #fafafa;
 }
 ::-webkit-scrollbar-thumb {
   background: #d4d4d8;

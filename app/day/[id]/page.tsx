@@ -17,9 +17,7 @@ export async function generateMetadata({ params }: Props) {
   const { id } = await params;
   const day = days.find((d) => d.id === parseInt(id));
   if (!day) return { title: "Non trovato" };
-  return {
-    title: `${day.date} — Londra 2026`,
-  };
+  return { title: `${day.date} — Londra 2026` };
 }
 
 export default async function DayPage({ params }: Props) {
@@ -32,15 +30,16 @@ export default async function DayPage({ params }: Props) {
   const nextDay = days.find((d) => d.id === dayId + 1);
 
   return (
-    <main className="min-h-screen bg-white pt-12 pb-20">
+    <main className="min-h-screen bg-[#fafafa] pt-12 pb-20">
       {/* Day header */}
-      <div className="max-w-2xl mx-auto px-4 pt-6 pb-2 animate-in">
+      <div className="max-w-2xl mx-auto px-4 pt-5 pb-4 border-b border-zinc-100 animate-in">
         <p className="text-zinc-400 text-xs mb-1">{day.date}</p>
-        <h1 className="text-xl font-semibold text-zinc-900">{day.title}</h1>
+        <h1 className="text-xl font-semibold text-zinc-900 leading-tight">{day.title}</h1>
+        <p className="text-zinc-500 text-xs mt-1">{day.activities.length} tappe</p>
       </div>
 
       {/* Timeline */}
-      <div className="max-w-2xl mx-auto px-4 pt-4">
+      <div className="max-w-2xl mx-auto px-4 pt-5">
         {day.activities.map((activity, index) => (
           <ActivityCard
             key={`${activity.time}-${activity.name}`}
@@ -52,17 +51,17 @@ export default async function DayPage({ params }: Props) {
       </div>
 
       {/* Prev / Next */}
-      <div className="max-w-2xl mx-auto px-4 mt-8">
+      <div className="max-w-2xl mx-auto px-4 mt-6 border-t border-zinc-100 pt-5">
         <div className="flex gap-2">
           {prevDay ? (
             <Link
               href={`/day/${prevDay.id}`}
-              className="flex-1 flex items-center gap-2 px-3 py-3 border border-zinc-200 rounded-xl hover:border-zinc-300 bg-zinc-50 hover:bg-zinc-100 transition-all group"
+              className="flex-1 flex items-center gap-2.5 px-4 py-3 bg-white border border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 shadow-sm transition-all group"
             >
-              <ArrowLeft size={14} className="text-zinc-400 group-hover:text-zinc-600 transition-colors flex-shrink-0" />
+              <ArrowLeft size={13} className="text-zinc-400 group-hover:text-zinc-600 transition-colors flex-shrink-0" />
               <div className="min-w-0">
-                <p className="text-zinc-400 text-[10px]">precedente</p>
-                <p className="text-zinc-700 text-sm truncate">{prevDay.title}</p>
+                <p className="text-zinc-400 text-[10px] uppercase tracking-wide">precedente</p>
+                <p className="text-zinc-700 text-sm font-medium truncate mt-0.5">{prevDay.title}</p>
               </div>
             </Link>
           ) : <div className="flex-1" />}
@@ -70,13 +69,13 @@ export default async function DayPage({ params }: Props) {
           {nextDay ? (
             <Link
               href={`/day/${nextDay.id}`}
-              className="flex-1 flex items-center justify-end gap-2 px-3 py-3 border border-zinc-200 rounded-xl hover:border-zinc-300 bg-zinc-50 hover:bg-zinc-100 transition-all group text-right"
+              className="flex-1 flex items-center justify-end gap-2.5 px-4 py-3 bg-white border border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 shadow-sm transition-all group text-right"
             >
               <div className="min-w-0">
-                <p className="text-zinc-400 text-[10px]">successivo</p>
-                <p className="text-zinc-700 text-sm truncate">{nextDay.title}</p>
+                <p className="text-zinc-400 text-[10px] uppercase tracking-wide">successivo</p>
+                <p className="text-zinc-700 text-sm font-medium truncate mt-0.5">{nextDay.title}</p>
               </div>
-              <ArrowRight size={14} className="text-zinc-400 group-hover:text-zinc-600 transition-colors flex-shrink-0" />
+              <ArrowRight size={13} className="text-zinc-400 group-hover:text-zinc-600 transition-colors flex-shrink-0" />
             </Link>
           ) : <div className="flex-1" />}
         </div>

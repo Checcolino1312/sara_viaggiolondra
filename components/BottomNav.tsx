@@ -9,7 +9,7 @@ export default function BottomNav() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-zinc-200">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[#fafafa]/95 backdrop-blur-sm border-t border-zinc-200">
       <div className="max-w-2xl mx-auto">
         <div className="flex h-14">
           {days.map((day) => {
@@ -18,33 +18,33 @@ export default function BottomNav() {
               <Link
                 key={day.id}
                 href={`/day/${day.id}`}
-                className={`flex-1 flex flex-col items-center justify-center gap-0.5 transition-colors ${
+                className={`flex-1 relative flex flex-col items-center justify-center gap-0.5 transition-colors ${
                   active ? "text-zinc-900" : "text-zinc-400 hover:text-zinc-600"
                 }`}
               >
-                <span className="text-[11px] font-medium tabular-nums leading-none">
+                {active && (
+                  <span className="absolute top-0 left-2 right-2 h-px bg-zinc-800" />
+                )}
+                <span className={`text-xs tabular-nums leading-none font-medium ${active ? "" : ""}`}>
                   {day.id}
                 </span>
-                <span className="text-[10px] leading-none">
+                <span className="text-[10px] leading-none text-current opacity-70">
                   {day.shortDate.split(" ")[1]}
                 </span>
-                {active && (
-                  <span className="block w-4 h-px bg-zinc-800 mt-0.5" />
-                )}
               </Link>
             );
           })}
 
           <Link
             href="/info"
-            className={`flex-1 flex flex-col items-center justify-center transition-colors ${
+            className={`flex-1 relative flex flex-col items-center justify-center transition-colors ${
               isActive("/info") ? "text-zinc-900" : "text-zinc-400 hover:text-zinc-600"
             }`}
           >
-            <span className="text-[11px] font-medium leading-none">info</span>
             {isActive("/info") && (
-              <span className="block w-4 h-px bg-zinc-800 mt-1" />
+              <span className="absolute top-0 left-2 right-2 h-px bg-zinc-800" />
             )}
+            <span className="text-[11px] font-medium leading-none">info</span>
           </Link>
         </div>
       </div>

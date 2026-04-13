@@ -42,7 +42,7 @@ function ChecklistItem({
   return (
     <button
       onClick={onToggle}
-      className={`w-full flex items-center gap-3 px-4 py-3 border-b border-violet-50 last:border-0 text-left transition-colors hover:bg-violet-50/50 ${
+      className={`w-full flex items-center gap-3 px-4 py-3.5 border-b border-zinc-100 last:border-0 text-left transition-colors hover:bg-zinc-50 ${
         checked ? "opacity-50" : ""
       }`}
     >
@@ -51,18 +51,14 @@ function ChecklistItem({
           checked ? "border-zinc-400 bg-zinc-200" : "border-zinc-300"
         }`}
       >
-        {checked && (
-          <span className="block w-1.5 h-1.5 rounded-sm bg-zinc-600" />
-        )}
+        {checked && <span className="block w-1.5 h-1.5 rounded-sm bg-zinc-600" />}
       </span>
 
       <div className="flex-1 min-w-0">
         <p className={`text-sm ${checked ? "line-through text-zinc-400" : "text-zinc-700"}`}>
           {item.label}
         </p>
-        {item.detail && (
-          <p className="text-zinc-400 text-xs mt-0.5">{item.detail}</p>
-        )}
+        {item.detail && <p className="text-zinc-400 text-xs mt-0.5">{item.detail}</p>}
       </div>
 
       {item.url && !checked && (
@@ -77,6 +73,20 @@ function ChecklistItem({
         </a>
       )}
     </button>
+  );
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-zinc-400 text-[11px] uppercase tracking-wider mb-3">{children}</p>
+  );
+}
+
+function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={`rounded-xl border border-zinc-200 bg-white shadow-sm overflow-hidden ${className}`}>
+      {children}
+    </div>
   );
 }
 
@@ -98,89 +108,89 @@ export default function InfoPage() {
   const completedCount = bookingItems.filter((b) => checked[b.id]).length;
 
   return (
-    <main className="min-h-screen bg-white pt-12 pb-20">
-      <div className="max-w-2xl mx-auto px-4 pt-6 space-y-8">
+    <main className="min-h-screen bg-[#fafafa] pt-12 pb-20">
+      <div className="max-w-2xl mx-auto px-4 pt-6 space-y-6">
 
         {/* Hotel */}
         <section className="animate-in" style={{ animationDelay: "40ms" }}>
-          <p className="text-zinc-400 text-[11px] uppercase tracking-wider mb-2">Hotel</p>
-          <div className="border border-zinc-200 rounded-xl px-4 py-3 bg-gradient-to-br from-white to-zinc-50">
-            <div className="flex justify-between items-start">
-              <div>
-                <p className="text-zinc-800 text-sm font-medium">{hotel.name}</p>
-                <p className="text-zinc-500 text-xs mt-0.5">{hotel.address}</p>
-                <div className="flex items-center gap-1 mt-1">
-                  <Phone size={10} className="text-zinc-400" />
-                  <a href={`tel:${hotel.phone}`} className="text-zinc-400 text-xs hover:text-zinc-700 transition-colors">
+          <SectionLabel>Hotel</SectionLabel>
+          <Card>
+            <div className="px-4 py-4 flex justify-between items-start gap-3">
+              <div className="min-w-0">
+                <p className="text-zinc-900 text-sm font-semibold">{hotel.name}</p>
+                <p className="text-zinc-500 text-xs mt-1">{hotel.address}</p>
+                <div className="flex items-center gap-1.5 mt-1.5">
+                  <Phone size={10} className="text-zinc-400 flex-shrink-0" />
+                  <a href={`tel:${hotel.phone}`} className="text-zinc-500 text-xs hover:text-zinc-800 transition-colors">
                     {hotel.phone}
                   </a>
                 </div>
                 {hotel.bookingRef && (
-                  <p className="text-zinc-400 text-xs mt-0.5 tabular-nums">Ref: {hotel.bookingRef}</p>
+                  <p className="text-zinc-400 text-xs mt-1 tabular-nums">Ref: {hotel.bookingRef}</p>
                 )}
-                <p className="text-zinc-300 text-xs mt-0.5">{hotel.nearestMetro}</p>
+                <p className="text-zinc-300 text-xs mt-1">{hotel.nearestMetro}</p>
               </div>
               <a
                 href={mapsUrl(hotel.coords.lat, hotel.coords.lng)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-400 hover:text-zinc-700 transition-colors"
+                className="text-zinc-400 hover:text-zinc-700 transition-colors flex-shrink-0"
               >
-                <MapPin size={15} />
+                <MapPin size={16} />
               </a>
             </div>
-          </div>
+          </Card>
         </section>
 
         {/* Transfer andata */}
         <section className="animate-in" style={{ animationDelay: "80ms" }}>
-          <div className="flex items-baseline justify-between mb-2">
-            <p className="text-zinc-400 text-[11px] uppercase tracking-wider">Transfer andata — 18 apr</p>
-            <p className="text-zinc-400 text-[11px]">{transferInTotal}</p>
+          <div className="flex items-baseline justify-between mb-3">
+            <SectionLabel>Transfer andata — 18 apr</SectionLabel>
+            <p className="text-zinc-400 text-[11px] mb-3">{transferInTotal}</p>
           </div>
-          <div className="border border-sky-100 rounded-xl overflow-hidden">
+          <Card>
             {transferIn.map((s, i) => (
-              <div key={i} className="flex gap-3 px-4 py-3 border-b border-sky-50 last:border-0 bg-gradient-to-br from-white to-sky-50">
-                <span className="text-zinc-300 text-[11px] tabular-nums w-3 flex-shrink-0 mt-0.5">{i + 1}</span>
+              <div key={i} className="flex gap-3 px-4 py-3.5 border-b border-zinc-100 last:border-0">
+                <span className="text-zinc-300 text-xs tabular-nums w-4 flex-shrink-0 mt-px">{i + 1}</span>
                 <div>
                   <p className="text-zinc-700 text-sm">{s.step}</p>
                   {s.detail && <p className="text-zinc-400 text-xs mt-0.5">{s.detail}</p>}
                 </div>
               </div>
             ))}
-          </div>
+          </Card>
         </section>
 
         {/* Transfer ritorno */}
-        <section className="animate-in" style={{ animationDelay: "120ms" }}>
-          <div className="flex items-baseline justify-between mb-2">
-            <p className="text-zinc-400 text-[11px] uppercase tracking-wider">Transfer ritorno — 22 apr</p>
-            <p className="text-zinc-400 text-[11px]">{transferOutTotal}</p>
+        <section className="animate-in" style={{ animationDelay: "110ms" }}>
+          <div className="flex items-baseline justify-between mb-3">
+            <SectionLabel>Transfer ritorno — 22 apr</SectionLabel>
+            <p className="text-zinc-400 text-[11px] mb-3">{transferOutTotal}</p>
           </div>
-          <div className="border border-rose-100 rounded-xl overflow-hidden">
+          <Card>
             {transferOut.map((s, i) => (
-              <div key={i} className="flex gap-3 px-4 py-3 border-b border-rose-50 last:border-0 bg-gradient-to-br from-white to-rose-50">
-                <span className="text-zinc-300 text-[11px] tabular-nums w-3 flex-shrink-0 mt-0.5">{i + 1}</span>
+              <div key={i} className="flex gap-3 px-4 py-3.5 border-b border-zinc-100 last:border-0">
+                <span className="text-zinc-300 text-xs tabular-nums w-4 flex-shrink-0 mt-px">{i + 1}</span>
                 <div>
                   <p className="text-zinc-700 text-sm">{s.step}</p>
                   {s.detail && <p className="text-zinc-400 text-xs mt-0.5">{s.detail}</p>}
                 </div>
               </div>
             ))}
-          </div>
+          </Card>
         </section>
 
         {/* Checklist */}
-        <section className="animate-in" style={{ animationDelay: "160ms" }}>
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-zinc-400 text-[11px] uppercase tracking-wider">Da prenotare</p>
+        <section className="animate-in" style={{ animationDelay: "140ms" }}>
+          <div className="flex items-center justify-between mb-3">
+            <SectionLabel>Da prenotare</SectionLabel>
             {mounted && (
-              <span className="text-zinc-400 text-xs tabular-nums">
+              <span className="text-zinc-400 text-xs tabular-nums mb-3">
                 {completedCount}/{bookingItems.length}
               </span>
             )}
           </div>
-          <div className="border border-violet-100 rounded-xl overflow-hidden bg-white">
+          <Card>
             {bookingItems.map((item) => (
               <ChecklistItem
                 key={item.id}
@@ -189,17 +199,17 @@ export default function InfoPage() {
                 onToggle={() => toggle(item.id)}
               />
             ))}
-          </div>
+          </Card>
         </section>
 
         {/* Note utili */}
-        <section className="animate-in" style={{ animationDelay: "200ms" }}>
-          <p className="text-zinc-400 text-[11px] uppercase tracking-wider mb-2">Note utili</p>
-          <div className="border border-amber-100 rounded-xl overflow-hidden">
+        <section className="animate-in" style={{ animationDelay: "170ms" }}>
+          <SectionLabel>Note utili</SectionLabel>
+          <Card>
             {tips.map((tip, i) => (
-              <div key={i} className="px-4 py-3 border-b border-amber-50 last:border-0 bg-gradient-to-br from-white to-amber-50">
+              <div key={i} className="px-4 py-3.5 border-b border-zinc-100 last:border-0">
                 <div className="flex items-baseline justify-between gap-2">
-                  <p className="text-zinc-700 text-sm font-medium">{tip.title}</p>
+                  <p className="text-zinc-800 text-sm font-medium">{tip.title}</p>
                   {tip.url && (
                     <a
                       href={tip.url}
@@ -212,10 +222,10 @@ export default function InfoPage() {
                     </a>
                   )}
                 </div>
-                <p className="text-zinc-400 text-xs mt-0.5 leading-relaxed">{tip.body}</p>
+                <p className="text-zinc-500 text-xs mt-1 leading-relaxed">{tip.body}</p>
               </div>
             ))}
-          </div>
+          </Card>
         </section>
 
         <Footer />
