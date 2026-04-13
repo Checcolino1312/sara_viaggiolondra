@@ -4,8 +4,8 @@
   "description": "Itinerario viaggio a Londra 18-22 Aprile 2026",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#09090b",
-  "theme_color": "#09090b",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa",
   "orientation": "portrait",
   "icons": [
     {
