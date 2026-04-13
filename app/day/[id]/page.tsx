@@ -19,7 +19,6 @@ export async function generateMetadata({ params }: Props) {
   if (!day) return { title: "Non trovato" };
   return {
     title: `${day.date} — Londra 2026`,
-    description: day.narrative,
   };
 }
 
@@ -35,14 +34,13 @@ export default async function DayPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-white pt-12 pb-20">
       {/* Day header */}
-      <div className="max-w-2xl mx-auto px-4 pt-6 pb-4 animate-in">
+      <div className="max-w-2xl mx-auto px-4 pt-6 pb-2 animate-in">
         <p className="text-zinc-400 text-xs mb-1">{day.date}</p>
-        <h1 className="text-xl font-semibold text-zinc-900 mb-2">{day.title}</h1>
-        <p className="text-zinc-500 text-sm leading-relaxed">{day.narrative}</p>
+        <h1 className="text-xl font-semibold text-zinc-900">{day.title}</h1>
       </div>
 
       {/* Timeline */}
-      <div className="max-w-2xl mx-auto px-4 pt-2">
+      <div className="max-w-2xl mx-auto px-4 pt-4">
         {day.activities.map((activity, index) => (
           <ActivityCard
             key={`${activity.time}-${activity.name}`}

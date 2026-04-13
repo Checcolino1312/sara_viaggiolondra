@@ -5,7 +5,9 @@ import { MapPin, Phone, ExternalLink } from "lucide-react";
 import {
   hotel,
   transferIn,
+  transferInTotal,
   transferOut,
+  transferOutTotal,
   bookingItems,
   tips,
   BookingItem,
@@ -113,6 +115,9 @@ export default function InfoPage() {
                     {hotel.phone}
                   </a>
                 </div>
+                {hotel.bookingRef && (
+                  <p className="text-zinc-400 text-xs mt-0.5 tabular-nums">Ref: {hotel.bookingRef}</p>
+                )}
                 <p className="text-zinc-300 text-xs mt-0.5">{hotel.nearestMetro}</p>
               </div>
               <a
@@ -129,7 +134,10 @@ export default function InfoPage() {
 
         {/* Transfer andata */}
         <section className="animate-in" style={{ animationDelay: "80ms" }}>
-          <p className="text-zinc-400 text-[11px] uppercase tracking-wider mb-2">Transfer andata — 18 apr</p>
+          <div className="flex items-baseline justify-between mb-2">
+            <p className="text-zinc-400 text-[11px] uppercase tracking-wider">Transfer andata — 18 apr</p>
+            <p className="text-zinc-400 text-[11px]">{transferInTotal}</p>
+          </div>
           <div className="border border-zinc-200 rounded-xl overflow-hidden">
             {transferIn.map((s, i) => (
               <div key={i} className="flex gap-3 px-4 py-3 border-b border-zinc-100 last:border-0 bg-zinc-50">
@@ -145,7 +153,10 @@ export default function InfoPage() {
 
         {/* Transfer ritorno */}
         <section className="animate-in" style={{ animationDelay: "120ms" }}>
-          <p className="text-zinc-400 text-[11px] uppercase tracking-wider mb-2">Transfer ritorno — 22 apr</p>
+          <div className="flex items-baseline justify-between mb-2">
+            <p className="text-zinc-400 text-[11px] uppercase tracking-wider">Transfer ritorno — 22 apr</p>
+            <p className="text-zinc-400 text-[11px]">{transferOutTotal}</p>
+          </div>
           <div className="border border-zinc-200 rounded-xl overflow-hidden">
             {transferOut.map((s, i) => (
               <div key={i} className="flex gap-3 px-4 py-3 border-b border-zinc-100 last:border-0 bg-zinc-50">
@@ -187,7 +198,20 @@ export default function InfoPage() {
           <div className="border border-zinc-200 rounded-xl overflow-hidden">
             {tips.map((tip, i) => (
               <div key={i} className="px-4 py-3 border-b border-zinc-100 last:border-0 bg-zinc-50">
-                <p className="text-zinc-700 text-sm font-medium">{tip.title}</p>
+                <div className="flex items-baseline justify-between gap-2">
+                  <p className="text-zinc-700 text-sm font-medium">{tip.title}</p>
+                  {tip.url && (
+                    <a
+                      href={tip.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-400 hover:text-zinc-700 transition-colors text-xs flex items-center gap-1 flex-shrink-0"
+                    >
+                      {tip.urlLabel ?? "Link"}
+                      <ExternalLink size={11} />
+                    </a>
+                  )}
+                </div>
                 <p className="text-zinc-400 text-xs mt-0.5 leading-relaxed">{tip.body}</p>
               </div>
             ))}
