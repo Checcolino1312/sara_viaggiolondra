@@ -80,19 +80,50 @@ export const transferInTotal = "~1h 20min porta a porta";
 export const transferOut: TransferStep[] = [
   { step: "Sveglia", detail: "5:30" },
   { step: "A piedi → Gloucester Road", detail: "~5 min" },
-  { step: "Circle Line · Gloucester Road → Liverpool Street", detail: "~25 min, partire entro le 6:30" },
-  { step: "Stansted Express · Liverpool Street → Stansted", detail: "treno ~7:00, ~47 min" },
+  {
+    step: "Circle Line · Gloucester Road → Liverpool Street",
+    detail: "~25 min, partire entro le 6:30",
+  },
+  {
+    step: "Stansted Express · Liverpool Street → Stansted",
+    detail: "treno ~7:00, ~47 min",
+  },
   { step: "Arrivo Stansted", detail: "~7:47" },
   { step: "Volo 10:30 · Stansted → Roma", detail: "" },
 ];
 export const transferOutTotal = "~1h 20min porta a porta";
 
 export const bookingItems: BookingItem[] = [
-  { id: "horizon-22", label: "Horizon 22", detail: "gratuito — prenotato mar 21 h16:00", url: "https://horizon22.co.uk" },
-  { id: "london-eye", label: "London Eye", detail: "~£30 — londoneye.com", url: "https://www.londoneye.com" },
-  { id: "tower-of-london", label: "Tower of London", detail: "~£33 — hrp.org.uk", url: "https://www.hrp.org.uk/tower-of-london" },
-  { id: "stansted-express-out", label: "Stansted Express (andata)", detail: "stanstedexpress.com", url: "https://www.stanstedexpress.com" },
-  { id: "stansted-express-return", label: "Stansted Express (ritorno)", detail: "stanstedexpress.com", url: "https://www.stanstedexpress.com" },
+  {
+    id: "horizon-22",
+    label: "Horizon 22",
+    detail: "gratuito — prenotato mar 21 h16:00",
+    url: "https://horizon22.co.uk",
+  },
+  {
+    id: "london-eye",
+    label: "London Eye",
+    detail: "~£30 — londoneye.com",
+    url: "https://www.londoneye.com",
+  },
+  {
+    id: "tower-of-london",
+    label: "Tower of London",
+    detail: "~£33 — hrp.org.uk",
+    url: "https://www.hrp.org.uk/tower-of-london",
+  },
+  {
+    id: "stansted-express-out",
+    label: "Stansted Express (andata)",
+    detail: "stanstedexpress.com",
+    url: "https://www.stanstedexpress.com",
+  },
+  {
+    id: "stansted-express-return",
+    label: "Stansted Express (ritorno)",
+    detail: "stanstedexpress.com",
+    url: "https://www.stanstedexpress.com",
+  },
 ];
 
 export const tips: Tip[] = [
@@ -201,7 +232,7 @@ export const days: DayItinerary[] = [
     date: "Domenica 19 Aprile",
     shortDate: "Dom 19",
     title: "Westminster & Soho",
-    subtitle: "Buckingham Palace — Big Ben — Berwick Street — Covent Garden",
+    subtitle: "Buckingham Palace — Big Ben — Chinatown — Berwick Street — Covent Garden",
     activities: [
       {
         time: "9:00",
@@ -226,10 +257,10 @@ export const days: DayItinerary[] = [
       },
       {
         time: "13:00",
-        name: "Pranzo — South Bank",
+        name: "🥟 Chinatown — food tour",
         badges: [],
-        coords: "South Bank London",
-        notes: "Borough Market è chiuso la domenica, ma lungo il Tamigi ci sono diversi chioschi e ristoranti informali.",
+        coords: "Chinatown London Gerrard Street",
+        notes: "Tour gastronomico! Bun House (bao), Bunsik (corndog coreano), Beijing Dumpling, pancake al mango. Tutto su Gerrard St e dintorni, a 2 min da Piccadilly Circus.",
       },
       {
         time: "14:30",
@@ -246,11 +277,18 @@ export const days: DayItinerary[] = [
         notes: "Copertina di Morning Glory (1995). Il punto esatto è davanti al n. 23, vicino a Sister Ray Records. La strada è pedonale e ha ancora diversi negozi di dischi indipendenti.",
       },
       {
+        time: "15:30",
+        name: "🍪 Crème — cookies",
+        badges: [],
+        coords: "Creme 4 D'Arblay Street Soho London",
+        notes: "Mega cookies gooey stile NYC! 4 D'Arblay St — letteralmente 1 minuto da Berwick Street. Da provare: miso white chocolate e milk chocolate chip.",
+      },
+      {
         time: "16:00",
         name: "Covent Garden",
         badges: [],
         coords: "Covent Garden London",
-        notes: "La piazza centrale ospita spesso musicisti e performer di strada. Il mercato coperto ha negozi e caffè.",
+        notes: "Artisti di strada e mercato coperto. Qui fai tappa a 🍪 Ben's Cookies (nel mercato) e 🍵 JENKI Matcha (50a Long Acre) per un matcha whisked-to-order.",
       },
       {
         time: "18:00",
@@ -270,10 +308,10 @@ export const days: DayItinerary[] = [
     activities: [
       {
         time: "9:30–11:30",
-        name: "Camden Town / Camden Lock",
+        name: "🍟 Camden Town / Camden Lock",
         badges: [],
         coords: "Camden Lock Market London",
-        notes: "Il mercato coperto apre già dalle 10:00. Stables Market è il più caratteristico. Buono per colazione o coffee.",
+        notes: "Street food tour! Funky Chips, Yorkshire Burrito, Teoshi Sushi Burger, Malaysia Street Food. Il mercato coperto apre dalle 10:00. Stables Market è il più caratteristico.",
       },
       {
         time: "11:30",
@@ -345,10 +383,10 @@ export const days: DayItinerary[] = [
       },
       {
         time: "12:30–14:00",
-        name: "Borough Market",
+        name: "Borough Market + 🍵 JENKI Matcha",
         badges: [],
         coords: "Borough Market London",
-        notes: "Aperto mar–sab, 10:00–17:00. Chiuso domenica e lunedì. Ottimo per il pranzo: ci sono banchi di ogni tipo.",
+        notes: "Aperto mar–sab, 10:00–17:00. Pranzo gourmet con street food di ogni tipo. Passa da JENKI Matcha per un matcha fresco (sede Borough Market).",
       },
       {
         time: "14:30",
@@ -366,10 +404,10 @@ export const days: DayItinerary[] = [
       },
       {
         time: "17:30",
-        name: "Shopping — Regent Street / Carnaby Street",
+        name: "Shopping + ☕ Blank Street Coffee + 🍔 Shake Shack",
         badges: [],
         coords: "Regent Street London",
-        notes: "~20 min di metro dalla City (Central Line o Circle). Regent Street è più piacevole di Oxford Street per architettura e negozi. Carnaby Street è a due passi.",
+        notes: "~20 min di metro dalla City (Central Line o Circle). Blank Street Coffee per il matcha al cioccolato bianco (varie sedi zona Regent St). Shake Shack per un burger. Carnaby Street è a due passi.",
       },
       {
         time: "19:30",
