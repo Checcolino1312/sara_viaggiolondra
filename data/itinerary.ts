@@ -101,12 +101,6 @@ export const bookingItems: BookingItem[] = [
     url: "https://horizon22.co.uk",
   },
   {
-    id: "london-eye",
-    label: "London Eye",
-    detail: "~£30 — londoneye.com",
-    url: "https://www.londoneye.com",
-  },
-  {
     id: "tower-of-london",
     label: "Tower of London",
     detail: "~£33 — hrp.org.uk",
@@ -129,7 +123,7 @@ export const bookingItems: BookingItem[] = [
 export const tips: Tip[] = [
   {
     title: "Oyster / Contactless",
-    body: "Usa la carta contactless direttamente — le tariffe giornaliere sono capped automaticamente, non serve acquistare una Oyster. In alternativa si può comprare online.",
+    body: "Usa la carta contactless direttamente — le tariffe giornaliere sono capped automaticamente, non serve acquistare una Oyster.",
     url: "https://tfl.gov.uk/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/contactless-and-mobile-pay",
     urlLabel: "Info TfL",
   },
@@ -140,10 +134,10 @@ export const tips: Tip[] = [
     urlLabel: "Sito",
   },
   {
-    title: "London Eye",
-    body: "Conviene prenotare online per saltare la coda in loco.",
-    url: "https://www.londoneye.com",
-    urlLabel: "Prenota",
+    title: "National Gallery",
+    body: "Gratuita, Trafalgar Square. Chiude alle 18:00 (venerdì alle 21:00). Non serve prenotare.",
+    url: "https://www.nationalgallery.org.uk",
+    urlLabel: "Sito",
   },
   {
     title: "Tower of London",
@@ -153,7 +147,7 @@ export const tips: Tip[] = [
   },
   {
     title: "Musei gratuiti",
-    body: "Natural History Museum e British Museum non richiedono biglietto. Horizon 22 è gratuito ma richiede prenotazione.",
+    body: "Natural History Museum, British Museum, National Gallery, Tate Modern e Horizon 22 sono tutti gratuiti. Solo Horizon 22 richiede prenotazione.",
   },
   {
     title: "App utili",
@@ -232,7 +226,7 @@ export const days: DayItinerary[] = [
     date: "Domenica 19 Aprile",
     shortDate: "Dom 19",
     title: "Westminster & Soho",
-    subtitle: "Buckingham Palace — Big Ben — Chinatown — Berwick Street — Covent Garden",
+    subtitle: "Buckingham Palace — National Gallery — Chinatown — Berwick Street — Covent Garden",
     activities: [
       {
         time: "9:00",
@@ -249,11 +243,11 @@ export const days: DayItinerary[] = [
         notes: "Houses of Parliament e Westminster Abbey (esterno). Westminster Bridge è il posto migliore per la foto del Big Ben.",
       },
       {
-        time: "11:30",
-        name: "London Eye",
-        badges: ["bookRequired"],
-        coords: "London Eye Southbank",
-        notes: "~£30. Ogni giro dura ~30 min. Prenota online per evitare code.",
+        time: "11:30–13:00",
+        name: "🖼️ National Gallery",
+        badges: ["free"],
+        coords: "National Gallery Trafalgar Square London",
+        notes: "Trafalgar Square. Van Gogh (Girasoli), Monet (Ninfee), Leonardo (Vergine delle Rocce), Caravaggio (Cena in Emmaus). Gratuita, non serve prenotare. A 5 min a piedi da Chinatown.",
       },
       {
         time: "13:00",
@@ -364,7 +358,7 @@ export const days: DayItinerary[] = [
     date: "Martedì 21 Aprile",
     shortDate: "Mar 21",
     title: "Notting Hill & Beatles",
-    subtitle: "Portobello Road — Abbey Road — Borough Market — Horizon 22",
+    subtitle: "Portobello Road — Abbey Road — Borough Market — Tate Modern — Horizon 22",
     activities: [
       {
         time: "9:00–11:00",
@@ -389,10 +383,11 @@ export const days: DayItinerary[] = [
         notes: "Aperto mar–sab, 10:00–17:00. Pranzo gourmet con street food di ogni tipo. Passa da JENKI Matcha per un matcha fresco (sede Borough Market).",
       },
       {
-        time: "14:30",
-        name: "Passeggiata verso la City",
-        badges: [],
-        notes: "Borough Market è a 15 min a piedi da Horizon 22. Si può passare per London Bridge e godere la vista sul Tamigi.",
+        time: "14:00–15:30",
+        name: "🎨 Tate Modern",
+        badges: ["free"],
+        coords: "Tate Modern London",
+        notes: "Arte contemporanea e moderna sulla South Bank. Gratuita! A 5 min a piedi da Borough Market attraversando il Millennium Bridge. Turbine Hall è imperdibile.",
       },
       {
         time: "16:00",
@@ -400,7 +395,7 @@ export const days: DayItinerary[] = [
         badges: ["free", "bookRequired"],
         coords: "Horizon 22 Bishopsgate London",
         special: true,
-        notes: "22 Bishopsgate, 58° piano — il viewpoint gratuito più alto di Londra! Biglietti prenotati per le 16:00. Vista spettacolare con la luce del tardo pomeriggio. Chiude alle 18:00.",
+        notes: "22 Bishopsgate, 58° piano — il viewpoint gratuito più alto di Londra! Biglietti prenotati per le 16:00. Vista spettacolare con la luce del tardo pomeriggio. Chiude alle 18:00. ~15 min a piedi dalla Tate.",
       },
       {
         time: "17:30",
